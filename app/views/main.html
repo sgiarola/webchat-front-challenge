@@ -1,0 +1,23 @@
+<div class="jumbotron">
+  <h1>'Allo, 'Allo</h1>
+  <p class="lead">
+    <img src="images/yeoman.png" alt="I'm Yeoman"><br>
+  </p>
+  <br />
+  <h3>Websocket Chat:</h3>
+  <section>
+    <br />
+    <ul ng-repeat="data in MainFactory.collection track by $index" >
+      <li> Autor: {{ data.message.sender }} - Mensagem: {{ data.message.content }} </li>
+    </ul>
+  </section>
+  <br />
+  <form ng-submit="submitMessageForm()" >
+    <label for="content" >Mensagem: </label><br />
+    <input type="text" id="content" ng-model="message.content" /> <br />
+    <br />
+    <input class="btn btn-lg btn-success" type="submit" value="Enviar Mensagem!" />
+  </form>
+</div>
+
+
