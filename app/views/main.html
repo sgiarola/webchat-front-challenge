@@ -8,7 +8,7 @@
   <section>
     <br />
     <ul ng-repeat="data in MainFactory.collection track by $index" >
-      <li> Autor: {{ data.message.sender }} - Mensagem: {{ data.message.content }} </li>
+      <li> Data: {{data.message.date | date:'yyyy-MM-dd HH:mm:ss'}} - Autor: {{ data.message.sender }} - Mensagem: {{ data.message.content }} </li>
     </ul>
   </section>
   <br />
