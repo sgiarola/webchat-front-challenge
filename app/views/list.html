@@ -1,0 +1,16 @@
+<div class="jumbotron">
+  <h1>'Allo, 'Allo</h1>
+  <p class="lead">
+    <img src="images/yeoman.png" alt="I'm Yeoman"><br>
+  </p>
+  <br />
+  <h3>Select your friend to send message:</h3>
+  <br />
+  <ul>
+    <li ng:repeat="friend in ListFactory.friends">
+      <button ng:click="select(friend)">{{friend.name}}</button>
+    </li>
+  </ul>
+</div>
+
+
