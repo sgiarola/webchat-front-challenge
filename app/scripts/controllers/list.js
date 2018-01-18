@@ -10,13 +10,14 @@
 angular.module('webchatApp')
   .factory('ListFactory', function($http) {
 
-    var friend;
+    var friends = [];
     var methods = {
-      friend: friend,
+      friends: friends,
       listFriends: function(username) {
 
         function successListCallback(response) {
           console.log(response);
+          friends.push(...response.data.friends);
         }
         function errorListCallback(error) {
           console.log(error);
@@ -38,12 +39,9 @@ angular.module('webchatApp')
   .controller('ListCtrl', function($scope, $rootScope, ListFactory, $location) { 
 
     $scope.select = function(friend) {
-      console.log(">>>>>>>>>> " + friend);
-      ListFactory.friend = friend;
+      ListFactory.friend = friend.name;
       $location.path('main');
     };
-
-    console.log($rootScope.globals.currentUser.username);
 
     ListFactory.listFriends($rootScope.globals.currentUser.username);
 

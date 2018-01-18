@@ -8,7 +8,7 @@
  * Controller of the webchatApp
  */
 angular.module('webchatApp')
-  .factory('MainFactory', function($websocket, Login) {
+  .factory('MainFactory', function($websocket, $rootScope) {
 
     var socket = $websocket('ws://localhost:8080/webchat/name');
 
@@ -16,7 +16,7 @@ angular.module('webchatApp')
 
     socket.onMessage(function(message) {
       var response = JSON.parse(message.data);
-      if (response.message.chatGroup.indexOf(Login.credencials.user) >= 0) {
+      if (response.message.chatGroup.indexOf($rootScope.globals.currentUser.username) >= 0) {
         response.message.date = new Date();
         collection.push(response);
       }
@@ -31,11 +31,11 @@ angular.module('webchatApp')
 
     return methods;
   })
-  .controller('MainCtrl', function($scope, MainFactory, Login) {
+  .controller('MainCtrl', function($scope, $rootScope, MainFactory, ListFactory) {
 
     $scope.submitMessageForm = function () {
-      $scope.message.sender = Login.credencials.user;
-      $scope.message.chatGroup = [Login.credencials.user, 'cicrano'];
+      $scope.message.sender = $rootScope.globals.currentUser.username;
+      $scope.message.chatGroup = [$rootScope.globals.currentUser.username, ListFactory.friend];
       MainFactory.sendMessage($scope.message);
       $scope.message.content = '';
     };

@@ -7,8 +7,8 @@
   <h3>Select your friend to send message:</h3>
   <br />
   <ul>
-    <li ng:repeat="friend in ListFactory.friends">
-      <button ng:click="select(friend)">{{friend.name}}</button>
+    <li ng:repeat="friend in ListFactory.friends track by $index">
+      <button ng:click="select(friend)">Nome: {{friend.name}}</button>
     </li>
   </ul>
 </div>
