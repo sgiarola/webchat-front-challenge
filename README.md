@@ -20,8 +20,8 @@ Para configurar este ambiente deve-se fazer um clone do projeto no mesmo host qu
 - npm install
 - grunt serve
 
-Após subir o ambiente a aplicação abrirá em localhost:9000.
-A conversa tanto via rest quanto websocket é na porta 8080.
+Após subir o ambiente a aplicação abrirá em http://localhost:9000.
+A conversa tanto via rest quanto websocket é feita pela porta 8080.
 
 # Utilização
 
