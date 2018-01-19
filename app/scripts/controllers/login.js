@@ -127,9 +127,14 @@ angular.module('webchatApp')
           AuthenticationService.SetCredentials($scope.login.user, $scope.login.password);
           $location.path('list');
         } else {
+          alert("Invalid Credentials");
           $scope.error = response.message;
           $scope.dataLoading = false;
         }
       });
     };
+
+    $scope.redirectToSignUp = function () {
+      $location.path('signup');
+    }
   });

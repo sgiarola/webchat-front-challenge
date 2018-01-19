@@ -7,14 +7,16 @@
   <h3>Websocket Chat Login:</h3>
   <br />
   <form ng-submit="submitLoginForm()" >
-    <label for="user" >Login: </label><br />
+    <label for="user" >Username: </label><br />
     <input type="text" id="user" ng-model="login.user" required/> <br />
     <br />
-    <label for="password" >Senha: </label><br />
+    <label for="password" >Password: </label><br />
     <input type="password" id="password" ng-model="login.password" required/> <br />
     <br />
-    <input class="btn btn-lg btn-success" type="submit" value="Entrar" />
+    <input class="btn btn-lg btn-success" type="submit" value="Login" />
   </form>
+  <br />
+  <a id="signup" href ng:click="redirectToSignUp()">SignUp!</a>
 </div>
 
 
