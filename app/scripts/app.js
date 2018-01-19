@@ -30,6 +30,11 @@ angular
         controller: 'SignCtrl',
         controllerAs: 'signup'
       })
+      .when('/friend', {
+        templateUrl: 'views/friend.html',
+        controller: 'FriendCtrl',
+        controllerAs: 'friend'
+      })
       .when('/list', {
         templateUrl: 'views/list.html',
         controller: 'ListCtrl',

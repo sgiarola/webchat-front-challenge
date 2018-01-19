@@ -2,43 +2,43 @@
 
 /**
  * @ngdoc function
- * @name webchatApp.controller:SignCtrl
+ * @name webchatApp.controller:FriendCtrl
  * @description
  * # SignCtrl
  * Controller of the webchatApp
  */
 angular.module('webchatApp')
-  .factory('SignFactory', function($http) {
+  .factory('FriendFactory', function($http) {
 
     var methods = {
-      signup: function(userForm, callback) {
+      add: function(friendForm, callback) {
 
         function successListCallback(response) {
           callback();
         }
         function errorListCallback(error) {
           console.log(error);
-          alert('Error in SignUp');
+          alert('Friend not Found');
         }
 
         $http({
-            method: 'POST',
-            url: 'http://localhost:8080/webchat/user',
+            method: 'PATCH',
+            url: 'http://localhost:8080/webchat/user/friend',
             headers: {
                 'Content-Type': 'application/json'
             },
-            data: JSON.stringify(userForm)
+            data: JSON.stringify(friendForm)
         }).then(successListCallback, errorListCallback);
       }
     };
 
     return methods;
   })
-  .controller('SignCtrl', function($scope, SignFactory, AuthenticationService, $location) { 
+  .controller('FriendCtrl', function($scope, $rootScope, FriendFactory, $location) { 
 
-    $scope.submitSignUpForm = function () {
-      SignFactory.signup($scope.signup, function() {
-        AuthenticationService.SetCredentials($scope.signup.name, $scope.signup.password);
+    $scope.submitAddFriendForm = function () {
+      $scope.addFriend.name = $rootScope.globals.currentUser.username;
+      FriendFactory.add($scope.addFriend, function() {
         $location.path('list');
       });
     };

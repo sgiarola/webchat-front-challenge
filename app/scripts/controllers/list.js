@@ -43,6 +43,10 @@ angular.module('webchatApp')
       $location.path('main');
     };
 
+    $scope.redirectToAddFriend = function () {
+      $location.path('friend');
+    }
+
     ListFactory.listFriends($rootScope.globals.currentUser.username);
 
     $scope.ListFactory = ListFactory;
