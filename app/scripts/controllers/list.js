@@ -11,13 +11,16 @@ angular.module('webchatApp')
   .factory('ListFactory', function($http) {
 
     var friends = [];
+    var messages = [];
     var methods = {
       friends: friends,
+      messages: messages,
       listFriends: function(username) {
 
         function successListCallback(response) {
           console.log(response);
           friends.push(...response.data.friends);
+          messages.push(...response.data.offLineMessagesBySender);
         }
         function errorListCallback(error) {
           console.log(error);

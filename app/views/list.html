@@ -9,10 +9,18 @@
   <ul>
     <li ng:repeat="friend in ListFactory.friends track by $index">
       <button ng:click="select(friend)">Friend: {{friend.name}}</button>
+      <img class="width: 5px;"ng-src="{{friend.loggedIn ? 'images/green.png' : 'images/grey.png'}}"/>
     </li>
   </ul>
   <br />
   <a id="addFriend" href ng:click="redirectToAddFriend()">Add Friend</a>
+  <br />
+  <h3>List of offline messages:</h3>
+  <br />
+  <ul ng:repeat="message in ListFactory.messages track by $index">
+    <li > {{message}} </li>
+  </ul>
+  <br />
 </div>
 
 
